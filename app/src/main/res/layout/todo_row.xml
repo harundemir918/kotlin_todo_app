@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/todoTextLinear"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/isDoneCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="0.05" />
+
+        <TextView
+            android:id="@+id/hourText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Hour"
+            android:textSize="16sp"
+            android:gravity="center_vertical"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="0.15" />
+
+        <TextView
+            android:id="@+id/todoText"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:text="Todo"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="0.60" />
+
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="32dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_baseline_delete_24"
+            android:layout_weight="0.01" />
+
+    </LinearLayout>
+
+</LinearLayout>
