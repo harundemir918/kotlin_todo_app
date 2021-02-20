@@ -28,13 +28,12 @@
             android:id="@+id/titleEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@id/titleText"
             android:layout_weight="0.95" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/dateLinear"
+        android:id="@+id/hourLinear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -43,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@id/titleLinear">
 
         <TextView
-            android:id="@+id/dateText"
+            android:id="@+id/hourText"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
@@ -52,11 +51,18 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/dateEditText"
+            android:id="@+id/hourEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@id/dateText"
-            android:layout_weight="0.95" />
+            android:layout_weight="0.90"
+            android:layout_marginEnd="10dp"/>
+
+        <ImageButton
+            android:id="@+id/hourPickerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_access_time" />
 
     </LinearLayout>
 
@@ -68,7 +74,7 @@
         android:text="Add"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dateLinear" />
+        app:layout_constraintTop_toBottomOf="@id/hourLinear" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
