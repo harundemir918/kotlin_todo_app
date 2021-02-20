@@ -21,7 +21,7 @@ class TodoAdapter(var todoContext: Context, var resources: Int, var todos: List<
         val todo: TodoModel = todos[position]
         todoText.text = todo.title
         hourText.text = todo.hour
-        isDoneCheck.isChecked = todo.isDone
+        isDoneCheck.isChecked = if (todo.isDone == 1) true else (false)
 
         return view
     }

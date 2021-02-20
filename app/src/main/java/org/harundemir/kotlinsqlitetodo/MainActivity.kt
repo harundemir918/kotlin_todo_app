@@ -11,14 +11,37 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val todoList = ArrayList<TodoModel>()
+        val todoAdapter = TodoAdapter(applicationContext, R.layout.todo_row, todoList)
+        todoListview.adapter = todoAdapter
 
-        todoList.add(TodoModel("First todo", "09:00", true))
-        todoList.add(TodoModel("Second todo", "10:00", true))
-        todoList.add(TodoModel("Third todo", "11:00", false))
-        todoList.add(TodoModel("Fourth todo", "12:00", false))
-        todoList.add(TodoModel("Fifth todo", "13:00", false))
+        try {
+            val todoDatabase = openOrCreateDatabase("todos", MODE_PRIVATE, null)
+            todoDatabase.execSQL("CREATE TABLE IF NOT EXISTS todos (title VARCHAR, hour TIME, isDone TINYINT)")
+            val cursor = todoDatabase.rawQuery("SELECT * FROM todos", null)
 
-        todoListview.adapter = TodoAdapter(applicationContext, R.layout.todo_row, todoList)
+            val titleIx = cursor.getColumnIndex("title")
+            val hourIx = cursor.getColumnIndex("hour")
+            val isDoneIx = cursor.getColumnIndex("isDone")
+
+            cursor.moveToFirst()
+
+            while (cursor != null) {
+                todoList.add(
+                    TodoModel(
+                        cursor.getString(titleIx),
+                        cursor.getString(hourIx),
+                        cursor.getInt(isDoneIx)
+                    )
+                )
+                todoAdapter.notifyDataSetChanged()
+
+                cursor.moveToNext()
+            }
+
+            cursor?.close()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     fun addTodo(view: View) {
