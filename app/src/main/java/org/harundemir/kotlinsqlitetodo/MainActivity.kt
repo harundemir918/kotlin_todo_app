@@ -1,6 +1,7 @@
 package org.harundemir.kotlinsqlitetodo
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -18,5 +19,11 @@ class MainActivity : AppCompatActivity() {
         todoList.add(TodoModel("Fifth todo", "13:00", false))
 
         todoListview.adapter = TodoAdapter(applicationContext, R.layout.todo_row, todoList)
+    }
+
+    fun addTodo(view: View) {
+        AddTodoBottomSheet().apply {
+            show(supportFragmentManager, AddTodoBottomSheet.TAG)
+        }
     }
 }
