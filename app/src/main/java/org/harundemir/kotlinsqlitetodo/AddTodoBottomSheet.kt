@@ -45,5 +45,17 @@ class AddTodoBottomSheet : BottomSheetDialogFragment() {
                 true
             ).show()
         })
+
+        addButton.setOnClickListener(View.OnClickListener {
+            val dbHelper: DbHelper = DbHelper(this.context)
+            try {
+                dbHelper.add(titleEditText.text.toString(), hourEditText.text.toString())
+                val manager = requireActivity().supportFragmentManager
+                manager.beginTransaction().remove(this).commit()
+            } catch (e: Exception) {
+                println("Error")
+                e.printStackTrace()
+            }
+        })
     }
 }
